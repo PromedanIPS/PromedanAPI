@@ -80,8 +80,25 @@ namespace PromedanAPI.Controllers
 
         }
 
-        
-        
+        /// <summary>
+        /// Permite Loguearse Evolution
+        /// </summary>
+        /// <param name="Usuario">Usuario Evolution</param>
+        /// <param name="Pass">Contraseña Evoluion</param>
+        /// <param name="Token">Token entregado</param>
+        /// <returns>Acceso al sistema</returns>        
+        public DataTable validarUsuarioEmpleado(string Usuario, string Pass, string Token)
+        {
+            Pass = encriptar(Pass).ToString().Substring(0, 20);
+            if (Token == "jklminu")
+            {
+                var dt = objDatos.llenarDataSet("spMovil_ValidarUsuarioEmpleado" + "'" + Usuario + "','" + Pass + "'").Tables[0];
+                return dt;
+            }
+            return null;
+
+        }
+
 
 
         /// <summary>
